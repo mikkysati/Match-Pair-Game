@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html ng-app="notesApp">
+<head>
+  <!-- jquery -->
+  <script src="js/vendor/jquery.min.js"></script>
+  <!-- angular js -->
+  <script src="js/vendor/angular.min.js"></script>
+  <script src="js/vendor/angular-animate.js"></script>
+  <!-- bootstrap -->
+  <script src="js/vendor/bootstrap.min.js"></script>
+  <link href="css/vendor/bootstrap.min.css" rel="stylesheet">
+  <link href="css/vendor/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="css/vendor/bootstrap-social.css" rel="stylesheet">
+  <!-- font awesome -->
+  <link href="css/vendor/font-awesome.css" rel="stylesheet">
+  <!-- app js and css --> 
+  <script src="js/app.js"></script>
+  <link href="css/vendor/animate.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+</head>
+
+<body ng-controller="MainCtrl as mainCtrl">
+
+  <div class="points-container">
+    <div>
+      Score: <span class="label label-success">{{mainCtrl.pointsScored}}</span>
+    </div>
+    <div>
+      00:{{mainCtrl.timer}}
+    </div>
+  </div>
+  
+  <div style="text-align: center;">
+    <div class="tiles-container">
+      <div ng-repeat="tile in mainCtrl.tiles track by $index" class="tile-box">
+        <!-- <div ng-if="mainCtrl.tilesOpened[$index] && !mainCtrl.tilesChecked[$index]" class="icon-shown">
+          <i class="fa {{tile}}" aria-hidden="true"></i>
+        </div>
+        <div ng-if="mainCtrl.tilesChecked[$index]" class="icons-checked animated flash">
+          <i class="fa fa-check" aria-hidden="true"></i>
+        </div>
+        <div ng-if="!mainCtrl.tilesOpened[$index] && !mainCtrl.tilesChecked[$index]" ng-click="mainCtrl.openTile($index)" class="icons-default">
+        Open
+        </div> -->
+        <div ng-click="mainCtrl.openTile($index)">
+          <span ng-if="mainCtrl.tilesOpened[$index] && !mainCtrl.tilesChecked[$index]">
+            <i class="fa {{tile}}" aria-hidden="true"></i>
+          </span>
+          <span ng-if="mainCtrl.tilesChecked[$index]" class="icons-checked animated flash">
+            <i class="fa fa-check" aria-hidden="true"></i>
+          </span>
+          <span ng-if="!mainCtrl.tilesOpened[$index] && !mainCtrl.tilesChecked[$index]" class="icons-default">
+            o
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="playAgainModal" class="modal fade" role="dialog">
+    <div>
+      <span ng-if="mainCtrl.boxesChecked === 8">You won</span>
+      <span ng-if="mainCtrl.boxesChecked !== 8">You Lost</span><br>
+      <span>Points Scored: {{mainCtrl.pointsScored}}</span><br>
+      <buton ng-click="mainCtrl.resetGame()" class="btn btn-default" style="margin-top: 10px">Replay</buton>
+    </div>
+  </div>
+
+</body>
+</html>

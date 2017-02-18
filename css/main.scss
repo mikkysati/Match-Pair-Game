@@ -1,0 +1,99 @@
+$box-width: 146px;
+$box-height: 146px;
+$box-color: white;
+$main-color: #5296AF;
+$box-border: 3px solid $main-color;
+
+body {
+	background-color: $main-color;
+}
+
+.points-container {
+	text-align: center;
+	color: white;
+	font-size: 30px;
+	div:nth-child(1) {
+		display: inline-block;
+		padding-left: 10px;
+		width: 300px;
+		text-align: left;
+		span {
+			background-color: #5BC0DE;
+			padding-top: 3px;
+			padding-bottom: 3px;
+		}
+	}
+	div:nth-child(2) {
+		display: inline-block;
+		padding-right: 10px;
+		width: 300px;
+		text-align: right;
+	}
+}
+
+.tiles-container {
+	display: inline-block;
+	width: 600px;
+}
+
+.tile-box {
+	display: inline-block;
+	border-left: $box-border;
+	border-top: $box-border;
+	border-radius: 20px;
+	text-align: center;
+	line-height: $box-height;
+	background-color: $box-color;
+	div {
+		width: $box-width;
+		height: $box-height;
+		cursor: pointer;
+	}
+	.fa {
+		font-size: 650%;
+		vertical-align: middle;
+	}
+}
+
+.tile-box:nth-child(4n) {
+	border-right: $box-border;
+}
+	
+.tile-box:nth-child(n+13) {
+	border-bottom: $box-border;
+}
+
+.icons-default {
+	color: $box-color;
+}
+.icons-default::selection {
+		color: $box-color;
+		background: $box-color;
+	}
+
+.icons-checked {
+	i {
+		color: $main-color;
+	}
+}
+
+.icon-shown.ng-enter {
+  transition:0.5s linear all;
+  opacity:0;
+}
+.icon-shown.ng-enter.ng-enter-active {
+  opacity:1;
+}
+
+#playAgainModal {
+	text-align: center;
+	margin-top: 275px;
+	div {
+	 display: inline-block;
+	 background-color: #F0F8FF;
+	 border-radius: 5px;
+	 padding: 25px;
+	 padding-bottom: 20px;
+	 font-weight: bold;
+	}
+}
